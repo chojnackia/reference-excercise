@@ -103,7 +103,7 @@ public class BookingService {
                 .collect(Collectors.toList());
     }
 
-    public Booking updateBooking(BookingDTO bookingDTO) {
+    public Booking updateBooking(BookingDTO bookingDTO, UUID id) {
         Apartment apartment = apartmentRepository.findByNameIgnoreCase(bookingDTO.getApartmentName());
         Owner owner = ownerRepository.findByName(apartment.getOwner().getName());
         Tenant tenant = tenantRepository.findByNameIgnoreCase(bookingDTO.getTenantName());
@@ -111,6 +111,7 @@ public class BookingService {
         long lengthOfStay = DAYS.between(bookingDTO.getCheckInDate(), bookingDTO.getCheckOutDate());
 
         Booking booking = BookingConverter.convertToBooking(bookingDTO, apartment, tenant, owner);
+
         booking.setPrice(countPriceForBooking(apartment.getPriceForDay(), lengthOfStay));
         booking.setOwner(owner);
 
