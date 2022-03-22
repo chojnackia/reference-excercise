@@ -3,14 +3,14 @@
 DROP TABLE IF EXISTS BOOKINGS;
 CREATE TABLE BOOKINGS
 (
-    ID             uuid    not null,
-    OWNER_ID       uuid,
-    TENANT_ID      uuid,
-    APARTMENT_ID   uuid,
-    CHECK_IN_DATE  date,
-    CHECK_OUT_DATE date,
-    PRICE          integer not null,
-    primary key (ID)
+    ID             UUID    NOT NULL,
+    OWNER_ID       UUID,
+    TENANT_ID      UUID,
+    APARTMENT_ID   UUID,
+    CHECK_IN_DATE  DATE,
+    CHECK_OUT_DATE DATE,
+    PRICE          integer NOT NULL,
+    PRIMARY KEY (ID)
 );
 
 DROP TABLE IF EXISTS APARTMENTS;
@@ -18,10 +18,10 @@ create table APARTMENTS
 (
     ID            UUID    NOT NULL,
     NAME          VARCHAR(255),
-    PRICE_FOR_DAY INTEGER not null,
+    PRICE_FOR_DAY INTEGER NOT NULL,
     DESCRIPTION   VARCHAR(255),
-    SURFACE       DOUBLE  not null,
-    OWNER_ID      UUID    not null,
+    SURFACE       DOUBLE  NOT NULL,
+    OWNER_ID      UUID    NOT NULL,
     PRIMARY KEY (ID)
 );
 
